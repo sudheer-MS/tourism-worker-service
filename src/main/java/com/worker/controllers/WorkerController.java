@@ -32,7 +32,7 @@ public class WorkerController {
 		this.workerService = workerService;
 	}
 
-	@PostMapping("/worker")
+	@PostMapping("/workers")
 	ResponseEntity<Worker> createWorker(@RequestBody Worker worker){
 		Worker newWorker = workerService.createWorker(worker);
 		HttpHeaders headers = new HttpHeaders();
@@ -40,7 +40,7 @@ public class WorkerController {
 		return ResponseEntity.status(HttpStatus.CREATED).headers(headers).body(newWorker);
 	}
 	
-	@PutMapping("/worker")
+	@PutMapping("/workers")
 	ResponseEntity<String> updateWorker(@RequestBody Worker worker){
 		String reponse = workerService.updateWorker(worker);
 		HttpHeaders headers = new HttpHeaders();
@@ -48,7 +48,7 @@ public class WorkerController {
 		return ResponseEntity.status(HttpStatus.ACCEPTED).headers(headers).body(reponse);
 	}
 	
-	@DeleteMapping("/worker/{workerId}")
+	@DeleteMapping("/workers/{workerId}")
 	ResponseEntity<String> deleteWorker(@PathVariable("workerId") int workerId){
 		String reponse = workerService.deleteWorker(workerId);
 		HttpHeaders headers = new HttpHeaders();
@@ -56,7 +56,7 @@ public class WorkerController {
 		return ResponseEntity.status(HttpStatus.OK).headers(headers).body(reponse);
 	}
 	
-	@GetMapping("/worker/{workerId}")
+	@GetMapping("/workers/{workerId}")
 	ResponseEntity<Worker> getWorkerById(@PathVariable("workerId") int workerId){
 		Worker getWorker = workerService.getWorkerById(workerId);
 		HttpHeaders headers = new HttpHeaders();
@@ -64,7 +64,7 @@ public class WorkerController {
 		return ResponseEntity.status(HttpStatus.OK).headers(headers).body(getWorker);
 	}
 	
-	@GetMapping("/worker")
+	@GetMapping("/workers")
 	ResponseEntity<List<Worker>> getAllWorkers(){
 		List<Worker> allWorkers = workerService.getAllWorkers();
 		HttpHeaders headers = new HttpHeaders();
@@ -72,7 +72,7 @@ public class WorkerController {
 		return ResponseEntity.status(HttpStatus.OK).headers(headers).body(allWorkers);
 	}
 	
-	@GetMapping("/worker/name/{name}")
+	@GetMapping("/workers/name/{name}")
 	ResponseEntity<List<Worker>> getWorkerByName(@PathVariable("name") String workerName){
 		List<Worker> workersByName = workerService.getWorkerByName(workerName);
 		HttpHeaders headers = new HttpHeaders();
@@ -80,7 +80,7 @@ public class WorkerController {
 		return ResponseEntity.status(HttpStatus.OK).headers(headers).body(workersByName);
 	}
 	
-	@GetMapping("/worker/type/{type}")
+	@GetMapping("/workers/type/{type}")
 	ResponseEntity<List<Worker>> getWorkerByType(@PathVariable("type") String type){
 		List<Worker> workersByType = workerService.getWorkerByType(type);
 		HttpHeaders headers = new HttpHeaders();
@@ -88,7 +88,7 @@ public class WorkerController {
 		return ResponseEntity.status(HttpStatus.OK).headers(headers).body(workersByType);
 	}
 	
-	@GetMapping("/worker/availability/{availability}")
+	@GetMapping("/workers/availability/{availability}")
 	ResponseEntity<List<Worker>> getWorkerByAvailability(@PathVariable("availability") String availability){
 		List<Worker> workersByAvailability = workerService.getWorkerByAvailability(availability);
 		HttpHeaders headers = new HttpHeaders();
@@ -96,7 +96,7 @@ public class WorkerController {
 		return ResponseEntity.status(HttpStatus.OK).headers(headers).body(workersByAvailability);
 	}
 	
-	@GetMapping("/worker/no-task")
+	@GetMapping("/workers/no-task")
 	ResponseEntity<List<Worker>> getWorkerByNoTask(){
 		List<Worker> noTaskWorkers = workerService.getWorkerByNoTask();
 		HttpHeaders headers = new HttpHeaders();
