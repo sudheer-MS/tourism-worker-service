@@ -72,8 +72,8 @@ public class WorkerController {
 		return ResponseEntity.status(HttpStatus.OK).headers(headers).body(allWorkers);
 	}
 	
-	@GetMapping("/workers/name/{name}")
-	ResponseEntity<List<Worker>> getWorkerByName(@PathVariable("name") String workerName){
+	@GetMapping("/workers/worker-name/{workerName}")
+	ResponseEntity<List<Worker>> getWorkerByName(@PathVariable("workerName") String workerName){
 		List<Worker> workersByName = workerService.getWorkerByName(workerName);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("desc", "get workers by name api");
