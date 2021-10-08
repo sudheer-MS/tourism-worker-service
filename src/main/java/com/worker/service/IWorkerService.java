@@ -11,7 +11,7 @@ public interface IWorkerService {
 	
 	Worker createWorker(Worker worker);
 	
-	String updateWorker(Worker worker);
+	Worker updateWorker(Worker worker);
 	
 	String deleteWorker(int workerId);
 	

@@ -28,9 +28,9 @@ public class WorkerServiceImpl implements IWorkerService {
 	}
 
 	@Override
-	public String updateWorker(Worker worker) {
-		workerRepository.save(worker);
-		return "Worker updated successfully";
+	public Worker updateWorker(Worker worker) {
+		Worker updatedWorker = workerRepository.save(worker);
+		return updatedWorker;
 	}
 
 	@Override

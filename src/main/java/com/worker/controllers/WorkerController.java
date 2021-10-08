@@ -41,13 +41,13 @@ public class WorkerController {
 	}
 	
 	@PutMapping("/workers")
-	ResponseEntity<String> updateWorker(@RequestBody Worker worker){
-		String reponse = workerService.updateWorker(worker);
+	ResponseEntity<Worker> updateWorker(@RequestBody Worker worker){
+		Worker updatedWorker = workerService.updateWorker(worker);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("desc", "update a worker api");
-		return ResponseEntity.status(HttpStatus.ACCEPTED).headers(headers).body(reponse);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).headers(headers).body(updatedWorker);
 	}
-	
+
 	@DeleteMapping("/workers/{workerId}")
 	ResponseEntity<String> deleteWorker(@PathVariable("workerId") int workerId){
 		String reponse = workerService.deleteWorker(workerId);
