@@ -22,7 +22,7 @@ import com.worker.service.IWorkerService;
  *
  */
 @RestController
-@RequestMapping("/worker-service")
+@RequestMapping("/worker-api")
 public class WorkerController {
 	
 	IWorkerService workerService;
