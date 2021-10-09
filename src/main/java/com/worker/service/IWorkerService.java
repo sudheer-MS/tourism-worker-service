@@ -2,7 +2,9 @@ package com.worker.service;
 
 import java.util.List;
 
+import com.worker.model.Availability;
 import com.worker.model.Worker;
+import com.worker.model.WorkerType;
 /**
  * @author SudheerMS
  *
@@ -21,9 +23,9 @@ public interface IWorkerService {
 	
 	List<Worker> getWorkerByName(String workerName);
 	
-	List<Worker> getWorkerByType(String type);
+	List<Worker> getWorkerByType(WorkerType type);
 	
-	List<Worker> getWorkerByAvailability(String availability);
+	List<Worker> getWorkerByAvailability(Availability availability);
 	
 	List<Worker> getWorkerByNoTask();
 }

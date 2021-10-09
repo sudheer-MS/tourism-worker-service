@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.worker.model.Availability;
 import com.worker.model.Worker;
+import com.worker.model.WorkerType;
 import com.worker.repository.IWorkerRepository;
 /**
  * @author SudheerMS
@@ -58,13 +60,13 @@ public class WorkerServiceImpl implements IWorkerService {
 	}
 
 	@Override
-	public List<Worker> getWorkerByType(String type) {
+	public List<Worker> getWorkerByType(WorkerType type) {
 		List<Worker> workersByType = workerRepository.findByType(type);
 		return workersByType;
 	}
 
 	@Override
-	public List<Worker> getWorkerByAvailability(String availability) {
+	public List<Worker> getWorkerByAvailability(Availability availability) {
 		List<Worker> workersByAvailability = workerRepository.findByAvailability(availability);
 		return workersByAvailability;
 	}

@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.worker.model.Availability;
 import com.worker.model.Worker;
+import com.worker.model.WorkerType;
 import com.worker.service.IWorkerService;
 /**
  * @author SudheerMS
@@ -82,7 +84,8 @@ public class WorkerController {
 	
 	@GetMapping("/workers/type/{type}")
 	ResponseEntity<List<Worker>> getWorkerByType(@PathVariable("type") String type){
-		List<Worker> workersByType = workerService.getWorkerByType(type);
+		WorkerType workerType = WorkerType.valueOf(type.toUpperCase());
+		List<Worker> workersByType = workerService.getWorkerByType(workerType);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("desc", "get workers by type api");
 		return ResponseEntity.status(HttpStatus.OK).headers(headers).body(workersByType);
@@ -90,7 +93,8 @@ public class WorkerController {
 	
 	@GetMapping("/workers/availability/{availability}")
 	ResponseEntity<List<Worker>> getWorkerByAvailability(@PathVariable("availability") String availability){
-		List<Worker> workersByAvailability = workerService.getWorkerByAvailability(availability);
+		Availability workerAvailability = Availability.valueOf(availability.toUpperCase());
+		List<Worker> workersByAvailability = workerService.getWorkerByAvailability(workerAvailability);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("desc", "get workers by availability api");
 		return ResponseEntity.status(HttpStatus.OK).headers(headers).body(workersByAvailability);
