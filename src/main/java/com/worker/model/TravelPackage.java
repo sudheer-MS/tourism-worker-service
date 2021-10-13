@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -48,9 +50,11 @@ public class TravelPackage {
 	
 	@ManyToOne
 	@JoinColumn(name="agent_id")
+	@JsonIgnore
 	private TravelAgent travelAgent;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="package_id")
+	@JsonIgnore
 	private Set<Task> tasks;
 }
