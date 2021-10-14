@@ -10,8 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,6 +38,5 @@ public class Worker {
 	
 	@ManyToOne
 	@JoinColumn(name = "task_id")
-	@JsonIgnore
 	private Task task;
 }
