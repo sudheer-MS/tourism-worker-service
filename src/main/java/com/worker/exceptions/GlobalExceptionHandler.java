@@ -69,9 +69,27 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		ApiErrors apiError = new ApiErrors(timestamp, message, status.value(), error);
 		return ResponseEntity.status(status).body(apiError);
 	}
+	
+	@ExceptionHandler(WorkerNotFoundException.class)
+	protected ResponseEntity<Object> handleWorkerNotFoundException(WorkerNotFoundException ex) {
+		String message = ex.getMessage();
+		LocalDateTime timestamp = LocalDateTime.now();
+		String error = "Worker Not Found Exception Occured";
+		ApiErrors apiError = new ApiErrors(timestamp, message, HttpStatus.BAD_GATEWAY.value(), error);
+		return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(apiError);
+	}
 
 	@ExceptionHandler(RuntimeException.class)
-	protected ResponseEntity<Object> handleException(RuntimeException ex) {
+	protected ResponseEntity<Object> handleRunTimeException(RuntimeException ex) {
+		String message = ex.getMessage();
+		LocalDateTime timestamp = LocalDateTime.now();
+		String error = "Runtime Exception Occured";
+		ApiErrors apiError = new ApiErrors(timestamp, message, HttpStatus.BAD_GATEWAY.value(), error);
+		return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(apiError);
+	}
+
+	@ExceptionHandler(Exception.class)
+	protected ResponseEntity<Object> handleException(Exception ex) {
 		String message = ex.getMessage();
 		LocalDateTime timestamp = LocalDateTime.now();
 		String error = "Other Exception";
